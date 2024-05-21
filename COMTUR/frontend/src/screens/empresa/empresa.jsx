@@ -422,6 +422,7 @@ export default function Empresa() {
     callback(filterOptions(inputValue));
   }
 
+
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
@@ -432,19 +433,32 @@ export default function Empresa() {
         borderColor: state.isFocused ? '#80bdff' : '#ced4da' // cor da borda ao passar o mouse
       },
       minHeight: 'calc(2.25rem + 2px)', // ajuste de altura
+      fontFamily: 'inherit', // herda a fonte do elemento pai
+      fontSize: '0.875rem', // text-sm do Tailwind
+      lineHeight: '1.25rem', // line height correspondente do Tailwind
+      paddingLeft: '2px', // padding-left ajustado
+      paddingRight: '8px', // padding-right ajustado
+      color: '#7D7F82' // cor do texto
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: '#7D7F82' // cor do texto selecionado
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: '#7D7F82' // cor do texto do placeholder
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? '#007bff' : '#fff', // cor de fundo do item selecionado ou não
-      color: state.isSelected ? '#fff' : '#495057' // cor do texto do item selecionado ou não
+      color: state.isSelected ? '#fff' : '#495057', // cor do texto do item selecionado ou não
+      fontFamily: 'inherit', // herda a fonte do elemento pai
+      fontSize: '0.875rem', // text-sm do Tailwind
+      lineHeight: '1.25rem' // line height correspondente do Tailwind
     })
   };
-
-  // if (userType === null) {
-  //   return <div>Carregando...</div>;
-  // } else if (userType === "1" || userType === "3") {
-  //   return <Navigate to="/notfound" />;
-  // } else {
+  
+  
   return (
     <div className="home">
       <div className="h-screen flex fixed">
@@ -524,11 +538,6 @@ export default function Empresa() {
             </div>
           </div>
           <div className="float-right flex-auto py-6">
-            <BtnAcao
-              funcao={() => VisualizarTodasEmpresas()}
-              acao="Publicados"
-            />
-
             <BtnAcao
               funcao={() => abrirFecharModalInserir("Cadastrar")}
               acao="Cadastrar"
